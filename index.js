@@ -1,11 +1,13 @@
-const inquirer = require('inquirer')
+const inquirer = require('inquirer');
 const fs = require('fs');
 const path = require('path');
-const Manager = require("./lib/Manager")
-const Intern = require("./lib/Intern")
+const Manager = require("./lib/Manager");
+const Intern = require("./lib/Intern");
 const Engineer = require("./lib/Engineer");
 const Employee = require('./lib/Employee');
 
+const dist_dir = path.resolve(__dirname, "dist")
+const dist_path = path.join(dist_dir, "team.html")
 function createManager() {
     inquirer.prompt([
         {
@@ -100,7 +102,7 @@ function addIntern() {
         }
 
     ]).then(answers => {
-        const intern = new Intern(answers.name, answers.id, ansers.email, answers.school)
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school)
         console.log(intern);
         createTeam()
     })
@@ -128,10 +130,11 @@ function createTeam() {
     })
 }
 
-const NewMember = ""
-employee.push(teamMemberChoice);
-addHtml(teamMemberChoice);
-function startHtml(
+//write a function to build all employees and then use push method array.push 
+//create a function to put the input into the html 
+
+
+function startHtml() {
     const html = `<!DOCTYPE html>
     <html lang="en">
     
@@ -165,14 +168,8 @@ function startHtml(
     </body>
     
     </html>`
-)
-
-//function to move in the team members 
-
-
-function writeToFile(fileName, data) {
-    return fs.writeFileSync("./dist/team.html", html, function (err), data)
 
 }
+//function to move in the team members
+//return fs.writeFileSync(__dirname, "./team.html", function (err, data))
 
-/
